@@ -52,9 +52,11 @@ public class myNote : MonoBehaviour {
    
     // Use this for initialization
     private void Start () {
-        noteManager = transform.root.GetComponent<Note_Tracker>();
+        //noteManager = transform.root.GetComponent<Note_Tracker>();
+        noteManager = transform.parent.parent.GetComponent<Note_Tracker>();
+
         // if no note manager stop
-        if(noteManager == null) { Debug.Log("No Ref to noteManager"); return; }       
+        if(noteManager == null) { Debug.Log("No Ref to noteManager on: " + transform.name); return; }       
 
 
         // check each child for the value slider
@@ -63,7 +65,7 @@ public class myNote : MonoBehaviour {
             // if the name is the same as the categories dropdown || assign it and stop looking
             if (child.name == ("Dropdown_Types")) { categories = child.GetComponent<Dropdown>(); break; }
             // if not then log it
-            else { Debug.Log("No Ref to categories/types dropdown"); return; }
+            else { Debug.Log("No Ref to categories/types dropdown on: " + transform.name); return; }
         }// end of for each child
 
         // check each child for the value slider
@@ -156,7 +158,7 @@ public class myNote : MonoBehaviour {
         // if we click but our mouse is not on the obj then stop
         if (canDragThis == false) { return; }
         // if canvas is null then stop
-        if(mainCanvas == null) { Debug.Log("no canvas to reference for " + transform.name); return; }
+        if(mainCanvas == null) { Debug.Log("no canvas to reference on: " + transform.name); return; }
         // my position = mouse position
         amDragging = true;
     }// end of clicked mosue
@@ -203,7 +205,7 @@ public class myNote : MonoBehaviour {
     public void ValueUpdate()
     {
         // if the slider is null then stop
-        if(valueSlider == null) { Debug.Log("no slider reference for value"); return; }
+        if(valueSlider == null) { Debug.Log("no slider reference for value on: " + transform.name); return; }
 
         // change the value to the slider's value
         myValue = valueSlider.value;

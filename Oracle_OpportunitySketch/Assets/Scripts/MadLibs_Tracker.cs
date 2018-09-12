@@ -31,7 +31,7 @@ public class MadLibs_Tracker : MonoBehaviour
     public Dropdown[] ddVerbs;
 
     // a list of verbs for the pains and gains
-    private string[] verbs = { "", "Opening", "Becoming", "Having",};
+    private string[] verbs = { "", "Opening", "Becoming", "Having", "Making",};
 
   
     // start
@@ -46,7 +46,7 @@ public class MadLibs_Tracker : MonoBehaviour
     private void Update()
     {
         // if we are missing a reference to any of the above needed dropdowns then stop
-        if(ddPs == null || ddPS == null || ddGs == null) { Debug.Log("missing a reference to one, or multiple of the dropdowns"); return; }
+        if(ddPs == null || ddPS == null || ddGs == null) { Debug.Log("missing a reference to one, or multiple of the dropdowns on: " + transform.name); return; }
         
         // we need to constantly have an updated list of all the sticky notes and to know when one is deleted or created. there are several ways to do this, likely better than the one
         // I plan to implement. I will use a timer that every 5 seconds will grab all the sticky notes to a new list replacing the old list of all the sticky notes
@@ -188,7 +188,7 @@ public class MadLibs_Tracker : MonoBehaviour
     private void AssignVerbs()
     {
         // if we have no ref to verbs dorpdowns then stop
-        if (ddVerbs.Length == 0 || ddVerbs == null) { Debug.Log("dropdown Verbs has no reference"); return; }
+        if (ddVerbs.Length == 0 || ddVerbs == null) { Debug.Log("dropdown Verbs has no reference on: " + transform.name); return; }
 
         // for each verb dropdown
         foreach (Dropdown dp in ddVerbs)

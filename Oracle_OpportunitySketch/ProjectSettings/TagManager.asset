@@ -11,6 +11,8 @@ TagManager:
   - Pain Killers
   - StickyNote
   - Products & Services
+  - ContextButtons
+  - ContextInputs
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Note_Tracker : MonoBehaviour {
 
+    /// this script tracks the important rules/important parts of the note creations and their categories.
+
     // all possible categories for sticky notes
     [HideInInspector]
     public string[] noteCategories = { "", "Gains", "Pains", "Jobs" , "Pain Killers", "Products & Services", "Gain Creators" };  
@@ -16,7 +18,8 @@ public class Note_Tracker : MonoBehaviour {
     [HideInInspector]
     [Range(0.05f, 1.0f)]
     public float noteSize = 0.2f;
-    // a variable to track each note's id (this may cause an issue when loading saved notes)
+    // a variable to track each note's id 
+    // (this may cause an issue when loading saved notes) ** may allow for a look through the mad libs notes ref and count the length of the array
     private int nextNoteId = 0;
     // a reference to the madlibs gameObject and script
     private MadLibs_Tracker madLibsScript;
@@ -26,9 +29,9 @@ public class Note_Tracker : MonoBehaviour {
     public void AddNote(Transform parent)
     {
         // if there is not sticky note ref to clone then  stop
-        if(stickyNoteObj == null) { Debug.Log("no sticky note object to ref"); return; }
+        if(stickyNoteObj == null) { Debug.Log("no sticky note object to ref on: " + transform.name); return; }
         // if we have no madlibs script ref then stop
-        if(GameObject.Find("MadLibs_Manager") == null){ Debug.Log("no reference to mad libs script found."); return;}
+        if(GameObject.Find("MadLibs_Manager") == null){ Debug.Log("no reference to mad libs script found. on: " + transform.name); return;}
 
         // if we havent gotten the madlibs reference yet
         if(madLibsScript == null)

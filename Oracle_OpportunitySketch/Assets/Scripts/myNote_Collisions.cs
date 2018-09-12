@@ -27,7 +27,7 @@ public class myNote_Collisions : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D trig)
     {
         // if we have no madlibs script ref then stop
-        if(GameObject.Find("MadLibs_Manager") == null){ Debug.Log("no reference to mad libs script found."); return;}
+        if(GameObject.Find("MadLibs_Manager") == null){ Debug.Log("no reference to mad libs script found. on: " + transform.name); return;}
         // if we havent gotten the madlibs reference yet
         if(madlibsTracker == null)
         {
@@ -37,12 +37,12 @@ public class myNote_Collisions : MonoBehaviour {
 
 
         // if we have no ref then stop
-        if(myNoteScript == null) { Debug.Log("No ref to 'myNote' script"); return; }
+        if(myNoteScript == null) { Debug.Log("No ref to 'myNote' script on: " + transform.name); return; }
         // if no ref to my note tracker then stop
-        if (myNoteTracker == null) { Debug.Log("No ref to 'Note_Tracker' script"); return; }
+        if (myNoteTracker == null) { Debug.Log("No ref to 'Note_Tracker' script on: " + transform.name); return; }
 
         //Debug.Log("Trigged with name: " + trig.gameObject.name);
-        Debug.Log("Trigged with tag: " + trig.gameObject.tag);
+        //Debug.Log("Trigged with tag: " + trig.gameObject.tag);
 
         // if we are done dragging the not
         if (myNoteScript.amDragging == false)
